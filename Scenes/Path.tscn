@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://b681sekr5hvag"]
+
+[ext_resource type="Script" path="res://Scripts/BuildBar.gd" id="1_kp47e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im8vb"]
+bg_color = Color(0, 1, 0.760784, 0.588235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.184314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84p4s"]
+bg_color = Color(0, 1, 0.760784, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.25098, 0.0666667, 0.847059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1oqq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jercn"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx5ni"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Path" type="Node2D"]
+visible = false
+script = ExtResource("1_kp47e")
+TileName = "Path"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_im8vb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_84p4s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l1oqq")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jercn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gx5ni")
+
+[node name="Cost" type="Label" parent="."]
+light_mask = 2
+visibility_layer = 2
+anchors_preset = -1
+anchor_left = -0.0666667
+anchor_top = 0.866667
+anchor_right = -0.0666667
+anchor_bottom = 0.866667
+offset_left = -25.0
+offset_top = -66.0
+offset_right = 60.0
+offset_bottom = -23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 26
+text = "10 $"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

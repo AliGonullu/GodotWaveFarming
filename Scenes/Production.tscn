@@ -1,0 +1,239 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr4s73byyojmn"]
+
+[ext_resource type="Script" path="res://Scripts/Production.gd" id="1_4rsp6"]
+[ext_resource type="PackedScene" uid="uid://ba1wgyp7ruosb" path="res://Scenes/StatBar.tscn" id="2_1ny4y"]
+[ext_resource type="Texture2D" uid="uid://bv0r56urqxus6" path="res://Sprites/ElectricIcon.png" id="3_ug25n"]
+
+[sub_resource type="Animation" id="Animation_gen86"]
+resource_name = "Fill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StatBar/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1000.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"production_began"
+}, {
+"args": [],
+"method": &"fill_anim_end"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_amocc"]
+resource_name = "FloatingElectricity"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ElectricIcons/ElectricIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.4, 47.6), Vector2(-53, 48), Vector2(35, 87), Vector2(-49, 103), Vector2(-3.99999, 49)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ElectricIcons/ElectricIcon2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 98), Vector2(-25, 121), Vector2(34, 45), Vector2(-64, 73), Vector2(40, 98)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ElectricIcons/ElectricIcon3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-28, 110), Vector2(43, 64), Vector2(-28, 110)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ElectricIcons/ElectricIcon4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 76), Vector2(-3, 145), Vector2(3, 76)]
+}
+
+[sub_resource type="Animation" id="Animation_w2m2l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StatBar/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ElectricIcons/ElectricIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.4, 47.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ElectricIcons/ElectricIcon2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 98)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ElectricIcons/ElectricIcon3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, 110)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ElectricIcons/ElectricIcon4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 76)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oegyf"]
+_data = {
+"Fill": SubResource("Animation_gen86"),
+"FloatingElectricity": SubResource("Animation_amocc"),
+"RESET": SubResource("Animation_w2m2l")
+}
+
+[node name="Production" type="Node2D"]
+visible = false
+script = ExtResource("1_4rsp6")
+
+[node name="CoolDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartLatency" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="StatBar" parent="." instance=ExtResource("2_1ny4y")]
+bar_color = Color(0, 1, 0.156863, 1)
+
+[node name="ProgressBar" parent="StatBar" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 32.0
+value = 0.0
+
+[node name="Label" parent="StatBar" index="1"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oegyf")
+}
+
+[node name="ElectricIcons" type="Node2D" parent="."]
+
+[node name="ElectricIcon" type="Sprite2D" parent="ElectricIcons"]
+position = Vector2(-4.4, 47.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_ug25n")
+
+[node name="ElectricIcon2" type="Sprite2D" parent="ElectricIcons"]
+position = Vector2(40, 98)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_ug25n")
+
+[node name="ElectricIcon3" type="Sprite2D" parent="ElectricIcons"]
+position = Vector2(-28, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_ug25n")
+
+[node name="ElectricIcon4" type="Sprite2D" parent="ElectricIcons"]
+position = Vector2(3, 76)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_ug25n")
+
+[connection signal="timeout" from="CoolDown" to="." method="_on_cool_down_timeout"]
+
+[editable path="StatBar"]

@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd1x5ax0p6x0j"]
+
+[ext_resource type="Script" path="res://Scripts/Tile.gd" id="1_rt736"]
+[ext_resource type="Texture2D" uid="uid://cqwyhloj53kea" path="res://Sprites/GroundTile.png" id="2_660rc"]
+[ext_resource type="PackedScene" uid="uid://dr4s73byyojmn" path="res://Scenes/production.tscn" id="3_f0nge"]
+[ext_resource type="Texture2D" uid="uid://qgwh14ypcb1x" path="res://Sprites/Light.png" id="4_txkj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qi3f"]
+size = Vector2(128, 128)
+
+[node name="Tile" type="Node2D"]
+process_priority = 10
+visible = false
+script = ExtResource("1_rt736")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+process_mode = 3
+position = Vector2(3.8147e-06, 1.90735e-06)
+scale = Vector2(6.9, 6.9)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -69.0
+offset_top = -69.0
+offset_right = 69.0
+offset_bottom = 69.0
+color = Color(1, 0.686275, 0.462745, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_660rc")
+
+[node name="TileArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea"]
+shape = SubResource("RectangleShape2D_3qi3f")
+
+[node name="OccupyingBuild" type="Sprite2D" parent="."]
+
+[node name="Production" parent="." instance=ExtResource("3_f0nge")]
+position = Vector2(0, -86)
+scale = Vector2(0.5, 0.7)
+
+[node name="ProgressBar" parent="Production/StatBar" index="0"]
+light_mask = 1
+visibility_layer = 1
+offset_left = -96.0
+offset_top = 24.2857
+offset_right = 96.0
+offset_bottom = 56.2857
+
+[node name="UnlockPrice" type="Label" parent="."]
+offset_left = -69.0
+offset_top = -69.0
+offset_right = 69.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 48
+text = "100 $"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FixPrice" type="Label" parent="."]
+z_index = 250
+offset_left = -69.0
+offset_top = -128.0
+offset_right = 69.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 36
+text = "100 $"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(0, 12)
+energy = 0.85
+texture = ExtResource("4_txkj7")
+texture_scale = 0.55
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="mouse_entered" from="TileArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TileArea" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="Production"]
+[editable path="Production/StatBar"]

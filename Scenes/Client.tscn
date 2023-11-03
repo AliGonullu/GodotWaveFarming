@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://36m3rfgom7hy"]
+
+[ext_resource type="Script" path="res://Scripts/Client.gd" id="1_b86hi"]
+[ext_resource type="Texture2D" uid="uid://bv0r56urqxus6" path="res://Sprites/ElectricIcon.png" id="2_ewrt7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xyvg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq6pu"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56n2f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5cla"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Client" type="Node2D"]
+visible = false
+script = ExtResource("1_b86hi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ClientName" type="Label" parent="."]
+offset_left = -47.0
+offset_top = -96.0
+offset_right = 46.0
+offset_bottom = -46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 34
+text = "City A"
+
+[node name="ElectricCost" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 26
+text = "Price : 100"
+
+[node name="ElectricIcon" type="Sprite2D" parent="ElectricCost"]
+position = Vector2(-25, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ewrt7")
+
+[node name="Reward" type="Label" parent="."]
+offset_left = -89.0
+offset_top = 44.0
+offset_right = 94.0
+offset_bottom = 83.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 26
+text = "Reward : 200 $"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0xyvg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xq6pu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_56n2f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_c5cla")
+
+[node name="Timeout" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

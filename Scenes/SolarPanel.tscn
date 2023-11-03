@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://byio3woh0lp42"]
+
+[ext_resource type="Script" path="res://Scripts/BuildBar.gd" id="1_4smq8"]
+[ext_resource type="Texture2D" uid="uid://bv0r56urqxus6" path="res://Sprites/ElectricIcon.png" id="2_ck3a0"]
+[ext_resource type="Texture2D" uid="uid://b3webg4ybh8yk" path="res://Sprites/LvlUp.png" id="3_0kcvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1qhx"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmyw"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.635294, 0.635294, 0.635294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlhf4"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1u41"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im8vb"]
+bg_color = Color(0, 1, 0.760784, 0.588235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.184314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84p4s"]
+bg_color = Color(0, 1, 0.760784, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.25098, 0.0666667, 0.847059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1oqq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jercn"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx5ni"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="SolarPanel" type="Node2D"]
+visible = false
+script = ExtResource("1_4smq8")
+TileName = "SolarPanel"
+
+[node name="ElectricMeasure" type="Label" parent="."]
+offset_left = -62.0
+offset_top = 76.0
+offset_right = 57.9997
+offset_bottom = 116.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 26
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ElectricIcon" type="Sprite2D" parent="ElectricMeasure"]
+position = Vector2(102.889, 21.5557)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ck3a0")
+
+[node name="LevelUpButton" type="Button" parent="."]
+offset_left = -58.0
+offset_top = -109.0
+offset_right = 67.0
+offset_bottom = -65.0
+theme_override_colors/font_color = Color(1, 0.976471, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_f1qhx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttmyw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlhf4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_w1u41")
+text = "Lvl Up"
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelUpButton"]
+position = Vector2(3.63636, 13.6364)
+scale = Vector2(0.386364, 0.485795)
+texture = ExtResource("3_0kcvq")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -61.0
+offset_top = -60.444
+offset_right = 59.0
+offset_bottom = 59.556
+theme_override_styles/normal = SubResource("StyleBoxFlat_im8vb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_84p4s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l1oqq")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jercn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gx5ni")
+
+[node name="Cost" type="Label" parent="."]
+light_mask = 2
+visibility_layer = 2
+anchors_preset = -1
+anchor_left = -0.0666667
+anchor_top = 0.866667
+anchor_right = -0.0666667
+anchor_bottom = 0.866667
+offset_left = -26.0
+offset_top = -66.444
+offset_right = 59.0
+offset_bottom = -23.444
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 26
+text = "10 $"
+
+[connection signal="button_down" from="LevelUpButton" to="." method="_on_level_up_button_button_down"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -1,0 +1,204 @@
+[gd_scene load_steps=24 format=3 uid="uid://birajjjt280co"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_wlubu"]
+[ext_resource type="Script" path="res://Scripts/Grid.gd" id="2_bj5c4"]
+[ext_resource type="Script" path="res://Scripts/CameraHandling.gd" id="3_dp2xt"]
+[ext_resource type="PackedScene" uid="uid://c00v7urv3ml80" path="res://Scenes/Wec.tscn" id="4_uml45"]
+[ext_resource type="PackedScene" uid="uid://byio3woh0lp42" path="res://Scenes/SolarPanel.tscn" id="5_ksvhg"]
+[ext_resource type="PackedScene" uid="uid://bqgh8hkca7elb" path="res://Scenes/Dock.tscn" id="6_21ff7"]
+[ext_resource type="PackedScene" uid="uid://b681sekr5hvag" path="res://Scenes/Path.tscn" id="7_xlh0o"]
+[ext_resource type="PackedScene" uid="uid://1js7uhkpcg7t" path="res://Scenes/WorldMap.tscn" id="8_igqoc"]
+[ext_resource type="Texture2D" uid="uid://blq4t5kr6c8f2" path="res://Sprites/WorldIcon.png" id="9_7fp6e"]
+[ext_resource type="Texture2D" uid="uid://bv0r56urqxus6" path="res://Sprites/ElectricIcon.png" id="10_if08a"]
+[ext_resource type="Texture2D" uid="uid://cia6a03nillrw" path="res://Sprites/Demolish.png" id="11_t5hwh"]
+[ext_resource type="PackedScene" uid="uid://ba1wgyp7ruosb" path="res://Scenes/StatBar.tscn" id="12_cwf57"]
+[ext_resource type="Texture2D" uid="uid://nschnern12km" path="res://Sprites/MoneyIcon.png" id="13_ie2x1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpfqq"]
+bg_color = Color(0, 0.27451, 0.176471, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.439216, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfis0"]
+bg_color = Color(0, 0.27451, 0.509804, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.439216, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_webps"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlsmk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1c1b"]
+bg_color = Color(0.564706, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.305882, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vh06u"]
+bg_color = Color(0.643137, 0, 0.0980392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.478431, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sba7s"]
+bg_color = Color(0.270588, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0137i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivvnt"]
+size = Vector2(565, 235)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfnaf"]
+size = Vector2(170, 160)
+
+[node name="Main" type="Node2D"]
+visible = false
+script = ExtResource("1_wlubu")
+
+[node name="ProductionBase" type="Node2D" parent="."]
+
+[node name="Grid" type="Node2D" parent="ProductionBase"]
+script = ExtResource("2_bj5c4")
+width = 20
+height = 15
+
+[node name="Camera2D" type="Camera2D" parent="ProductionBase"]
+offset = Vector2(700, 500)
+limit_left = -2500
+limit_top = -2000
+limit_right = 2500
+limit_bottom = 2000
+limit_smoothed = true
+script = ExtResource("3_dp2xt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ProductionBase"]
+layer = 50
+visible = false
+
+[node name="BuildBar" type="Node2D" parent="ProductionBase/CanvasLayer"]
+position = Vector2(256, 616)
+scale = Vector2(0.83, 0.83)
+
+[node name="WEC" parent="ProductionBase/CanvasLayer/BuildBar" instance=ExtResource("4_uml45")]
+position = Vector2(-212, -4)
+
+[node name="SolarPanel" parent="ProductionBase/CanvasLayer/BuildBar" instance=ExtResource("5_ksvhg")]
+position = Vector2(-69.7778, -4)
+
+[node name="Dock" parent="ProductionBase/CanvasLayer/BuildBar" instance=ExtResource("6_21ff7")]
+position = Vector2(72.4445, -4)
+
+[node name="Path" parent="ProductionBase/CanvasLayer/BuildBar" instance=ExtResource("7_xlh0o")]
+position = Vector2(214.667, -4)
+
+[node name="FreeSprite" type="Sprite2D" parent="ProductionBase"]
+z_index = 100
+
+[node name="WorldMap" parent="." instance=ExtResource("8_igqoc")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+visible = false
+
+[node name="ChangeScene" type="Button" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 170.0
+offset_bottom = 170.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpfqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mfis0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_webps")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nlsmk")
+icon = ExtResource("9_7fp6e")
+
+[node name="ClaimAll" type="Button" parent="CanvasLayer"]
+offset_left = 1136.0
+offset_top = 160.0
+offset_right = 1274.0
+offset_bottom = 298.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpfqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mfis0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_webps")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nlsmk")
+icon = ExtResource("10_if08a")
+
+[node name="Demolish" type="Button" parent="CanvasLayer"]
+offset_left = 1152.0
+offset_top = 592.0
+offset_right = 1290.0
+offset_bottom = 730.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1c1b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vh06u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sba7s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0137i")
+icon = ExtResource("11_t5hwh")
+
+[node name="MoneyBar" parent="CanvasLayer" instance=ExtResource("12_cwf57")]
+position = Vector2(1096, 112)
+scale = Vector2(1.2, 1.2)
+bar_color = Color(0.768627, 0.686275, 0.145098, 1)
+
+[node name="MoneyIcon" type="Sprite2D" parent="CanvasLayer/MoneyBar"]
+position = Vector2(-160, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_ie2x1")
+
+[node name="ElecrtricBar" parent="CanvasLayer" instance=ExtResource("12_cwf57")]
+position = Vector2(1096, 48)
+scale = Vector2(1.2, 1.2)
+bar_color = Color(0.0705882, 1, 0.870588, 1)
+
+[node name="ElectricIcon" type="Sprite2D" parent="CanvasLayer/ElecrtricBar"]
+position = Vector2(-160, -6.66667)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_if08a")
+
+[node name="UIDetector" type="Area2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/UIDetector"]
+position = Vector2(285.5, 599.5)
+shape = SubResource("RectangleShape2D_ivvnt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/UIDetector"]
+position = Vector2(82, 78)
+shape = SubResource("RectangleShape2D_vfnaf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/UIDetector"]
+position = Vector2(1197, 642)
+shape = SubResource("RectangleShape2D_vfnaf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/UIDetector"]
+position = Vector2(1198, 210)
+shape = SubResource("RectangleShape2D_vfnaf")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+blend_mode = 1
+
+[node name="GoldPileTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="visibility_changed" from="ProductionBase" to="." method="_on_production_base_visibility_changed"]
+[connection signal="button_down" from="CanvasLayer/ChangeScene" to="." method="_on_change_scene_button_down"]
+[connection signal="button_down" from="CanvasLayer/ClaimAll" to="." method="_on_claim_all_button_down"]
+[connection signal="button_down" from="CanvasLayer/Demolish" to="." method="_on_demolish_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/UIDetector" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UIDetector" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="GoldPileTimer" to="." method="_on_gold_pile_timer_timeout"]
